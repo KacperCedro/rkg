@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "homepage": "https://KacperCedro.github.io/rkg",
+  "homepage": "https://kacpercedro.github.io/rkg/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
