@@ -30,7 +30,7 @@ function App() {
   const [subCubeColors, setSubCubeColors] = useState(initialSubCubeColors)
 
   const [cubeKey, setCubeKey] = useState(0); // unikalny klucz do ponownego renderowania
-  //const [isCubeGenerated, setIsCubeGenerated] = useState(false)
+  const [isFormShown, setIsFormShown] = useState(false)
 
   
 
@@ -46,14 +46,22 @@ function App() {
 
   return (
     <>
-      <ConfigForm
-        sideSize={sideSize} 
-        cubeOpacity={cubeOpacity}
-        cubeSize={cubeSize}
-        enableInsideCubes={enableInsideCubes}
-        subCubeColors={subCubeColors}
-        ChangeCube={ChangeCube}
-      />
+      <button onClick={() => {
+        setIsFormShown(!isFormShown)
+      }}>
+        {isFormShown ? "Hide config panel" : "Show config panel"}
+      </button>
+      { isFormShown && (
+        <ConfigForm
+          sideSize={sideSize} 
+          cubeOpacity={cubeOpacity}
+          cubeSize={cubeSize}
+          enableInsideCubes={enableInsideCubes}
+          subCubeColors={subCubeColors}
+          ChangeCube={ChangeCube}
+        />
+      )}
+      
       <Cube 
         key={cubeKey}
         sideSize={sideSize} 
