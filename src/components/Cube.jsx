@@ -224,6 +224,36 @@ export const Cube = (props) => {
         }
     }, [props]);
 
+    // Obsługa klawiatury
+    const handleKeydown = (e) => {
+        const ROTATION_STEP = 10; // Kąt rotacji w stopniach dla każdego naciśnięcia
+        switch (e.key) {
+            case "ArrowUp":
+                setRotation((prev) => ({ ...prev, x: Math.max(-90, prev.x - ROTATION_STEP)  }));
+                break;
+            case "ArrowDown":
+                setRotation((prev) => ({ ...prev, x: Math.min(90, prev.x + ROTATION_STEP) }));
+                break;
+            case "ArrowLeft":
+                setRotation((prev) => ({ ...prev, y: prev.y - ROTATION_STEP }));
+                break;
+            case "ArrowRight":
+                setRotation((prev) => ({ ...prev, y: prev.y + ROTATION_STEP }));
+                break;
+            default:
+                break;
+        }
+    };
+
+    // Dodaj nasłuchiwanie klawiatury
+    useEffect(() => {
+        window.addEventListener("keydown", handleKeydown);
+
+        return () => {
+            window.removeEventListener("keydown", handleKeydown);
+        };
+    }, []);
+
     // Funkcja do rozpoczęcia interakcji (mysz lub dotyk)
     const handleStart = (e) => {
         e.preventDefault();
@@ -237,6 +267,24 @@ export const Cube = (props) => {
     };
 
     // Funkcja obsługująca ruch kursora lub palca
+    const handleMove = (e) => {
+    if (!isInteracting) return;
+
+    const isTouch = e.type === "touchmove";
+    const { clientX, clientY } = isTouch ? e.touches[0] : e;
+
+    const deltaX = clientX - lastPosition.x;
+    const deltaY = clientY - lastPosition.y;
+
+    // Odwróć znak dla deltaX
+    setRotation((prev) => ({
+        x: Math.max(-90, Math.min(90, prev.x - deltaY * 0.05)), // Rotacja wokół X (góra/dół)
+        y: prev.y + deltaX * 0.05, // Rotacja wokół Y (lewo/prawo)
+    }));
+
+    setLastPosition({ x: clientX, y: clientY });
+    };
+    /*
     const handleMove = (e) => {
         if (!isInteracting) return;
 
@@ -253,6 +301,7 @@ export const Cube = (props) => {
 
         setLastPosition({ x: clientX, y: clientY });
     };
+    */
 
     // Funkcja do zakończenia interakcji
     const handleEnd = () => {
@@ -298,7 +347,7 @@ export const Cube = (props) => {
                 <div
                     className="cube"
                     style={{
-                        transform: `rotateX(${rotation.x / 100}deg) rotateY(${rotation.y / 100}deg)`,
+                        transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y }deg)`,
                         height: `${props.cubeSize * props.sideSize}px`,
                         width: `${props.cubeSize * props.sideSize}px`,
                     }}
