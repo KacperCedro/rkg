@@ -13,8 +13,8 @@ export const loadSubCubaTable = (props) => {
                         props={props} 
                         x={x} 
                         y={y} 
-                        z={z} /*transformSubCube={relocate(x, y, z, props.cubeSize, props.sideSize)} */ /
-                        >),
+                        z={z} 
+                        />),
                     x: x,
                     y: y,
                     z: z,

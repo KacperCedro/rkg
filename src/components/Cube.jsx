@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { loadSubCubaTable } from "./modules/tableGenerator"
 import "./Cube.css"
+/*
 export const Cube = (props) => {
     const [subCubeTable, setSubCubeTable] = useState()
     const [rotation, setRotation] = useState({ x: 0, y: 0 });
@@ -72,6 +73,7 @@ export const Cube = (props) => {
         <>
             <div
                 style={{
+                    perspective: props.perspective,
                     height: `${props.cubeSize * props.sideSize * 2}px`,
                     width: `${props.cubeSize * props.sideSize * 2}px`,
                 }}
@@ -92,3 +94,218 @@ export const Cube = (props) => {
         </>
     )
 }
+*/
+
+/*
+export const Cube = (props) => {
+    const [subCubeTable, setSubCubeTable] = useState();
+    const [rotation, setRotation] = useState({ x: 0, y: 0 });
+    const [isInteracting, setIsInteracting] = useState(false);
+    const [lastPosition, setLastPosition] = useState({ x: 0, y: 0 });
+
+    useEffect(() => {
+        const table = loadSubCubaTable(props);
+
+        if (!props.enableInsideCubes) {
+            setSubCubeTable(
+                table.filter((element) =>
+                    (element.y === 0 || element.y === props.cubeSize - 1) ||
+                    (element.x === 0 || element.x === props.cubeSize - 1) ||
+                    (element.z === 0 || element.z === props.cubeSize - 1)
+                )
+            );
+        } else {
+            setSubCubeTable(table);
+        }
+    }, [props]);
+
+    const handleStart = (e) => {
+        e.preventDefault(); // Zapobiega domyślnym działaniom, np. przewijaniu na dotykowych ekranach.
+        setIsInteracting(true);
+
+        const isTouch = e.type === "touchstart";
+        const { clientX, clientY } = isTouch ? e.touches[0] : e;
+
+        setLastPosition({ x: clientX, y: clientY });
+    };
+
+    const handleMove = (e) => {
+        if (!isInteracting) return;
+
+        const isTouch = e.type === "touchmove";
+        const { clientX, clientY } = isTouch ? e.touches[0] : e;
+
+        const deltaX = clientX - lastPosition.x;
+        const deltaY = clientY - lastPosition.y;
+
+        setRotation((prev) => ({
+            x: prev.x - deltaY * 0.5,
+            y: prev.y + deltaX * 0.5,
+        }));
+
+        setLastPosition({ x: clientX, y: clientY });
+    };
+
+    const handleEnd = () => {
+        setIsInteracting(false);
+    };
+
+    useEffect(() => {
+        if (isInteracting) {
+            window.addEventListener("mousemove", handleMove);
+            window.addEventListener("mouseup", handleEnd);
+            window.addEventListener("touchmove", handleMove);
+            window.addEventListener("touchend", handleEnd);
+        } else {
+            window.removeEventListener("mousemove", handleMove);
+            window.removeEventListener("mouseup", handleEnd);
+            window.removeEventListener("touchmove", handleMove);
+            window.removeEventListener("touchend", handleEnd);
+        }
+
+        return () => {
+            window.removeEventListener("mousemove", handleMove);
+            window.removeEventListener("mouseup", handleEnd);
+            window.removeEventListener("touchmove", handleMove);
+            window.removeEventListener("touchend", handleEnd);
+        };
+    }, [isInteracting]);
+
+    const subCubeElements = subCubeTable?.map((element) => element.component);
+
+    return (
+        <>
+            <div
+                style={{
+                    perspective: `${props.perspective}px`,
+                    marginTop: `${props.cubeSize * (Math.sqrt(2 * props.sideSize * props.sideSize))}px`,
+                }}
+                className="cube-wrapper"
+                onMouseDown={handleStart}
+                onTouchStart={handleStart}
+            >
+                <div
+                    className="cube"
+                    style={{
+                        transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
+                    }}
+                >
+                    {subCubeElements}
+                </div>
+            </div>
+            <div style={{ height: `${props.cubeSize * (Math.sqrt(2 * props.sideSize * props.sideSize))}px` }}></div>
+        </>
+    );
+};
+*/
+
+export const Cube = (props) => {
+    const [subCubeTable, setSubCubeTable] = useState();
+    const [rotation, setRotation] = useState({ x: 0, y: 0 });
+    const [isInteracting, setIsInteracting] = useState(false);
+    const [lastPosition, setLastPosition] = useState({ x: 0, y: 0 });
+
+    useEffect(() => {
+        console.log("enableInsideCubes changed:", props.enableInsideCubes);
+        const table = loadSubCubaTable(props);
+
+        if (!props.enableInsideCubes) {
+            console.log("Loaded without inside cubes");
+            setSubCubeTable(
+                table.filter((element) => 
+                    (element.y === 0 || element.y === props.cubeSize - 1) ||
+                    (element.x === 0 || element.x === props.cubeSize - 1) ||
+                    (element.z === 0 || element.z === props.cubeSize - 1)
+                )
+            );
+        } else {
+            console.log("Loaded with inside cubes");
+            setSubCubeTable(table);
+        }
+    }, [props]);
+
+    // Funkcja do rozpoczęcia interakcji (mysz lub dotyk)
+    const handleStart = (e) => {
+        e.preventDefault();
+        setIsInteracting(true);
+
+        // Obsługa myszy lub dotyku
+        const isTouch = e.type === "touchstart";
+        const { clientX, clientY } = isTouch ? e.touches[0] : e;
+
+        setLastPosition({ x: clientX, y: clientY });
+    };
+
+    // Funkcja obsługująca ruch kursora lub palca
+    const handleMove = (e) => {
+        if (!isInteracting) return;
+
+        const isTouch = e.type === "touchmove";
+        const { clientX, clientY } = isTouch ? e.touches[0] : e;
+
+        const deltaX = clientX - lastPosition.x;
+        const deltaY = clientY - lastPosition.y;
+
+        setRotation((prev) => ({
+            x: prev.x - deltaY * 0.5,
+            y: prev.y + deltaX * 0.5,
+        }));
+
+        setLastPosition({ x: clientX, y: clientY });
+    };
+
+    // Funkcja do zakończenia interakcji
+    const handleEnd = () => {
+        setIsInteracting(false);
+    };
+
+    // Obsługa nasłuchiwania zdarzeń
+    useEffect(() => {
+        if (isInteracting) {
+            window.addEventListener("mousemove", handleMove);
+            window.addEventListener("mouseup", handleEnd);
+            window.addEventListener("touchmove", handleMove);
+            window.addEventListener("touchend", handleEnd);
+        } else {
+            window.removeEventListener("mousemove", handleMove);
+            window.removeEventListener("mouseup", handleEnd);
+            window.removeEventListener("touchmove", handleMove);
+            window.removeEventListener("touchend", handleEnd);
+        }
+
+        return () => {
+            window.removeEventListener("mousemove", handleMove);
+            window.removeEventListener("mouseup", handleEnd);
+            window.removeEventListener("touchmove", handleMove);
+            window.removeEventListener("touchend", handleEnd);
+        };
+    }, [isInteracting]);
+
+    const subCubeElements = subCubeTable?.map((element) => element.component);
+
+    return (
+        <>
+            <div
+                style={{
+                    perspective: props.perspective,
+                    height: `${props.cubeSize * props.sideSize * 2}px`,
+                    width: `${props.cubeSize * props.sideSize * 2}px`,
+                }}
+                className="cube-wrapper"
+                onMouseDown={handleStart}
+                onTouchStart={handleStart} // Dodano obsługę dotyku
+            >
+                <div
+                    className="cube"
+                    style={{
+                        transform: `rotateX(${rotation.x / 100}deg) rotateY(${rotation.y / 100}deg)`,
+                        height: `${props.cubeSize * props.sideSize}px`,
+                        width: `${props.cubeSize * props.sideSize}px`,
+                    }}
+                >
+                    {subCubeElements}
+                </div>
+            </div>
+        </>
+    );
+};

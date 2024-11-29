@@ -4,10 +4,10 @@ import { Cube } from "./components/Cube";
 import { ConfigForm } from './components/ConfigForm';
 
 // initial config
-let initialSideSize = 60
+let initialSideSize = 100
 let initialPerspective = 10000
 let initialOpacity = 0.3
-let initialCubeSize = 4
+let initialCubeSize = 2
 let initialEnableInsideCubes = true
 let initialSubCubeColors = {
   top: "#ffff00",

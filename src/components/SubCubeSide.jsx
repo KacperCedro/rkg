@@ -1,12 +1,13 @@
 export const SubCubeSide = (props) => {
     //console.log(props)
     return (
-       <figure
-            className={props.className}
+       <div
+            //className={props.className}
+            className="figure"
             style={{
                 transform: props.transform,
-                height: `${props.sideSize}px`, // Dodanie jednostek "px"
-                width: `${props.sideSize}px`,
+                height: `100%`,
+                width: `100%`,
                 backgroundColor: props.color,
                 opacity: props.opacity,
             }}

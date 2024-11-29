@@ -1,6 +1,12 @@
-export const relocate = (x,y,z, cubeSize, subCubeSideSize) => {
-    let newY = y * subCubeSideSize;
-    let newX = x * subCubeSideSize;
-    let newZ = z * subCubeSideSize;
-    return "translate3d(" + (newX - (subCubeSideSize * (cubeSize / 2))) + "px, " + (newY - (subCubeSideSize * (cubeSize / 2))) + "px, " + (newZ - (subCubeSideSize * (cubeSize / 2))) + "px)"
-}
+
+export const relocate = (x, y, z, cubeSize, subCubeSideSize) => {
+    const offset = (cubeSize - 1) / 2;
+    const newX = ((x - offset) * subCubeSideSize) + 0.5 * subCubeSideSize;
+    const newY = ((y - offset) * subCubeSideSize) + 0.5 * subCubeSideSize;
+    const newZ = (z - offset) * subCubeSideSize;
+
+    console.log(`Relocating cube: (${x}, ${y}, ${z})`);
+    console.log(`New position: translate3d(${newX}px, ${newY}px, ${newZ}px)`);
+
+    return `translate3d(${newX}px, ${newY}px, ${newZ}px)`;
+};
