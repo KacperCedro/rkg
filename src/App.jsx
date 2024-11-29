@@ -1,22 +1,10 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import { Cube } from "./components/Cube";
 import { ConfigForm } from './components/ConfigForm';
-
+import { initialCubeSize, initialEnableInsideCubes,initialOpacity,initialPerspective,initialSideSize,initialSubCubeColors, initialUnit } from "./initialConfig";
 // initial config
-let initialSideSize = 60
-let initialPerspective = 10000
-let initialOpacity = 0.5
-let initialCubeSize = 3
-let initialEnableInsideCubes = true
-let initialSubCubeColors = {
-  top: "#ffff00",
-  bottom: "#ffffff",
-  front: "#0000ff",
-  back: "#008000",
-  left: "#ffa500",
-  right: "#ff0000",
-}
+
 
 function App() {
 
@@ -32,7 +20,14 @@ function App() {
   const [cubeKey, setCubeKey] = useState(0); // unikalny klucz do ponownego renderowania
   const [isFormShown, setIsFormShown] = useState(false)
 
-  
+  useEffect(() => {
+    document.body.style.touchAction = isFormShown ? 'manipulation' : 'none';
+
+    return () => {
+      // Resetuje wartość, jeśli komponent zostanie odmontowany
+      document.body.style.touchAction = '';
+    };
+  }, [isFormShown])
 
   const ChangeCube = (data) => {
     console.log(data)
@@ -49,7 +44,7 @@ function App() {
       <button onClick={() => {
         setIsFormShown(!isFormShown)
       }}>
-        {isFormShown ? "Hide config panel" : "Show config panel"}
+        {isFormShown ? "Hide config panel" : "Show config panel and unlock browser"}
       </button>
       { isFormShown && (
         <>

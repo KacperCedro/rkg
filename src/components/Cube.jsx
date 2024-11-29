@@ -226,7 +226,7 @@ export const Cube = (props) => {
 
     // Obsługa klawiatury
     const handleKeydown = (e) => {
-        const ROTATION_STEP = 10; // Kąt rotacji w stopniach dla każdego naciśnięcia
+        const ROTATION_STEP = 30; // Kąt rotacji w stopniach dla każdego naciśnięcia
         switch (e.key) {
             case "ArrowUp":
                 setRotation((prev) => ({ ...prev, x: Math.max(-90, prev.x - ROTATION_STEP)  }));

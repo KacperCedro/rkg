@@ -1,8 +1,9 @@
 
 .cube{
+    position: absolute;
     transform-style: preserve-3d;
     transform-origin: center center ;
-    transition: transform 0.8s ease-out;
+    transition: transform 0.7s ease-out;
     /*
     border-color: blueviolet;
     border-width: 2px;
@@ -11,6 +12,8 @@
 }
 
 .cube-wrapper {
+    max-width: 90vw;
+    
     perspective: 1000px;
     display: flex;
     align-items: center;

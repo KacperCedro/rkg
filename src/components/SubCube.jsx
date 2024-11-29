@@ -21,16 +21,6 @@ export const SubCube = (props) => {
                     bottom: `rotateX(-90deg) translateZ(${props.props.sideSize / 2}px)`,
                     left: `rotateY(-90deg) translateZ(${props.props.sideSize / 2}px)`,
                     right: `rotateY(90deg) translateZ(${props.props.sideSize / 2}px)`,
-                    
-                    /*
-                    front: `rotateZ(0deg) translateZ(${0}px)`,
-                    back: `rotateZ(180deg) translateZ(${0}px) `,
-                    top: `rotateX(90deg) translateZ(${0}px)`,
-                    bottom: `rotateX(-90deg) translateZ(${0}px)`,
-                    left: `rotateY(-90deg) translateZ(${0}px)`,
-                    right: `rotateY(90deg) translateZ(${0}px)`,
-                    */
-                   
                 };
 
                 return (
@@ -38,6 +28,7 @@ export const SubCube = (props) => {
                         key={index}
                         transform={transforms[side]}
                         className={side}
+                        cubeSize={props.props.cubeSize}
                         color={props.props.subCubeColors[side]}
                         opacity={props.props.cubeOpacity}
                         sideSize={props.props.sideSize}
