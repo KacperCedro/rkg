@@ -10,12 +10,12 @@ let initialOpacity = 0.3
 let initialCubeSize = 4
 let initialEnableInsideCubes = true
 let initialSubCubeColors = {
-  top: "yellow",
-  bottom: "white",
-  front: "blue",
-  back: "green",
-  left: "orange",
-  right: "red",
+  top: "#ffff00",
+  bottom: "#ffffff",
+  front: "#0000ff",
+  back: "#008000",
+  left: "#ffa500",
+  right: "#ff0000",
 }
 
 function App() {
@@ -40,9 +40,8 @@ function App() {
     setCubeOpacity(data.cubeOpacity)
     setCubeSize(data.cubeSize)
     setEnableInsideCubes(data.enableInsideCubes)
+    setSubCubeColors(data.subCubeColors)
     setCubeKey((prevKey) => prevKey++)
-    //setIsCubeGenerated(!isCubeGenerated)
-    //setIsCubeGenerated(true)
   }
 
   return (

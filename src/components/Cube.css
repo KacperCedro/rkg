@@ -1,8 +1,29 @@
 
 .cube{
-    -webkit-transform-style: preserve-3d;
-    -webkit-perspective-origin: center center center;
-    -webkit-animation: rotate 10s infinite linear;
+    transform-origin: center center center;
+    transform-style: preserve-3d;
+    transition: transform 0.01s ease-out;
+
+    border-color: blueviolet;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.cube-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 20px;
+    cursor: grab;
+    border-radius: 20px;
+    border-color: blueviolet;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.cube-wrapper:active {
+    cursor: grabbing;
 }
 
 figure{
@@ -13,13 +34,11 @@ figure{
     border-radius: 10px;
     border-color: black;
     border-style: solid;
-    text-align: center;
-    color: black;
-    font-size: 40px;
 }
 
 .subCube {
     -webkit-transform-style: preserve-3d;
+    position:relative;
 }
 
 @-webkit-keyframes rotate {

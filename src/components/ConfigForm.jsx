@@ -18,7 +18,7 @@ export const ConfigForm = (formProps) => {
                 enableInsideCubes: tmpEnableInsideCubes,
                 subCubeColors: tmpSubCubeColors
             })
-            console.log(tmpEnableInsideCubes)
+            console.log(tmpSubCubeColors)
         }} 
         >
             <h1>
@@ -65,6 +65,100 @@ export const ConfigForm = (formProps) => {
                     name="cubeSize"
                 />
             </div>
+
+            <div className="colorConfig">
+                <h3>
+                    Change cube colors:
+                </h3>
+                <h4>
+                    front
+                </h4>
+                <input
+                    type="color" 
+                    name="front" // Zmień `name` na odpowiednie pole (np. "front", "back")
+                    value={tmpSubCubeColors.front}
+                    onChange={(e) => {
+                        const { name, value } = e.target;
+                        setTmpSubCubeColors(prevColors => ({
+                        ...prevColors,
+                        [name]: value // Nadpisuje wartość pola o nazwie z `name`
+                        }));
+                    }}
+                />
+                <h4>
+                    back
+                </h4>
+                <input
+                    type="color" 
+                    name="back" // Zmień `name` na odpowiednie pole (np. "front", "back")
+                    value={tmpSubCubeColors.back}
+                    onChange={(e) => {
+                        const { name, value } = e.target;
+                        setTmpSubCubeColors(prevColors => ({
+                        ...prevColors,
+                        [name]: value // Nadpisuje wartość pola o nazwie z `name`
+                        }));
+                    }}
+                /><h4>
+                    top
+                </h4>
+                <input
+                    type="color" 
+                    name="top" // Zmień `name` na odpowiednie pole (np. "front", "back")
+                    value={tmpSubCubeColors.top}
+                    onChange={(e) => {
+                        const { name, value } = e.target;
+                        setTmpSubCubeColors(prevColors => ({
+                        ...prevColors,
+                        [name]: value // Nadpisuje wartość pola o nazwie z `name`
+                        }));
+                    }}
+                /><h4>
+                    bottom
+                </h4>
+                <input
+                    type="color" 
+                    name="bottom" // Zmień `name` na odpowiednie pole (np. "front", "back")
+                    value={tmpSubCubeColors.bottom}
+                    onChange={(e) => {
+                        const { name, value } = e.target;
+                        setTmpSubCubeColors(prevColors => ({
+                        ...prevColors,
+                        [name]: value // Nadpisuje wartość pola o nazwie z `name`
+                        }));
+                    }}
+                /><h4>
+                    left
+                </h4>
+                <input
+                    type="color" 
+                    name="left" // Zmień `name` na odpowiednie pole (np. "front", "back")
+                    value={tmpSubCubeColors.left}
+                    onChange={(e) => {
+                        const { name, value } = e.target;
+                        setTmpSubCubeColors(prevColors => ({
+                        ...prevColors,
+                        [name]: value // Nadpisuje wartość pola o nazwie z `name`
+                        }));
+                    }}
+                />
+                <h4>
+                    right
+                </h4>
+                <input
+                    type="color" 
+                    name="right" // Zmień `name` na odpowiednie pole (np. "front", "back")
+                    value={tmpSubCubeColors.right}
+                    onChange={(e) => {
+                        const { name, value } = e.target;
+                        setTmpSubCubeColors(prevColors => ({
+                        ...prevColors,
+                        [name]: value // Nadpisuje wartość pola o nazwie z `name`
+                        }));
+                    }}
+                />
+            </div>
+
             <div className="opti">
                 <h3>
                     Optimalization:
