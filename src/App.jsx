@@ -4,10 +4,10 @@ import { Cube } from "./components/Cube";
 import { ConfigForm } from './components/ConfigForm';
 
 // initial config
-let initialSideSize = 100
+let initialSideSize = 60
 let initialPerspective = 10000
-let initialOpacity = 0.3
-let initialCubeSize = 2
+let initialOpacity = 0.5
+let initialCubeSize = 3
 let initialEnableInsideCubes = true
 let initialSubCubeColors = {
   top: "#ffff00",
@@ -52,6 +52,7 @@ function App() {
         {isFormShown ? "Hide config panel" : "Show config panel"}
       </button>
       { isFormShown && (
+        <>
         <ConfigForm
           sideSize={sideSize} 
           cubeOpacity={cubeOpacity}
@@ -60,6 +61,10 @@ function App() {
           subCubeColors={subCubeColors}
           ChangeCube={ChangeCube}
         />
+        <button onClick={() => setIsFormShown(false)}>
+          Hide config panel
+        </button>
+        </>
       )}
       
       <Cube 

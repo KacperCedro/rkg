@@ -16,7 +16,7 @@ export const SubCube = (props) => {
                 const transforms = {
                     
                     front: `rotateZ(0deg) translateZ(${props.props.sideSize / 2}px)`,
-                    back: `rotateZ(180deg) translateZ(${props.props.sideSize / 2}px) `,
+                    back: `rotateZ(180deg) translateZ(${-props.props.sideSize / 2}px) `,
                     top: `rotateX(90deg) translateZ(${props.props.sideSize / 2}px)`,
                     bottom: `rotateX(-90deg) translateZ(${props.props.sideSize / 2}px)`,
                     left: `rotateY(-90deg) translateZ(${props.props.sideSize / 2}px)`,

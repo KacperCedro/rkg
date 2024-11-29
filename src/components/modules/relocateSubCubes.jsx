@@ -1,8 +1,8 @@
 
 export const relocate = (x, y, z, cubeSize, subCubeSideSize) => {
     const offset = (cubeSize - 1) / 2;
-    const newX = ((x - offset) * subCubeSideSize) + 0.5 * subCubeSideSize;
-    const newY = ((y - offset) * subCubeSideSize) + 0.5 * subCubeSideSize;
+    const newX = ((x - offset) * subCubeSideSize) + 0.5 * subCubeSideSize * (cubeSize -1);
+    const newY = ((y - offset) * subCubeSideSize) + 0.5 * subCubeSideSize  * (cubeSize -1);
     const newZ = (z - offset) * subCubeSideSize;
 
     console.log(`Relocating cube: (${x}, ${y}, ${z})`);

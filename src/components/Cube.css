@@ -3,11 +3,11 @@
     transform-style: preserve-3d;
     transform-origin: center center ;
     transition: transform 0.01s ease-out;
-    /*
+    
     border-color: blueviolet;
     border-width: 2px;
     border-style: solid;
-    */
+    
 }
 
 .cube-wrapper {
@@ -44,11 +44,11 @@ div.figure{
     position: absolute;
     transform-style: preserve-3d;
     transform-origin: center center center ;
-    /*
+    
     border-color: red;
     border-width: 2px;
     border-style: solid;
-    */
+    
 }
 @keyframes rotate {
     from {
