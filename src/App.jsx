@@ -21,7 +21,7 @@ function App() {
   const [isFormShown, setIsFormShown] = useState(false)
 
   useEffect(() => {
-    document.body.style.touchAction = isFormShown ? 'manipulation' : 'none';
+    document.body.style.touchAction = isFormShown ? 'pan-y' : 'none';
 
     return () => {
       // Resetuje wartość, jeśli komponent zostanie odmontowany

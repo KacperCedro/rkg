@@ -13,7 +13,7 @@
 
 .cube-wrapper {
     max-width: 90vw;
-    
+
     perspective: 1000px;
     display: flex;
     align-items: center;
@@ -24,6 +24,7 @@
     border-color: blueviolet;
     border-width: 2px;
     border-style: solid;
+    overflow: visible;
 }
 
 .cube-wrapper:active {

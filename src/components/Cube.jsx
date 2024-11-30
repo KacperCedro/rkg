@@ -201,7 +201,7 @@ export const Cube = (props) => {
 
 export const Cube = (props) => {
     const [subCubeTable, setSubCubeTable] = useState();
-    const [rotation, setRotation] = useState({ x: 0, y: 0 });
+    const [rotation, setRotation] = useState({ x: -30, y: -30 });
     const [isInteracting, setIsInteracting] = useState(false);
     const [lastPosition, setLastPosition] = useState({ x: 0, y: 0 });
 
