@@ -32,33 +32,53 @@ export const SubCube = (props) => {
                 ) {
                     // tylna ścianka
                     if (
-                        ((props.x > 0) && (props.x < props.props.cubeSize -1)) &&
-                        ((props.y > 0) && (props.y < props.props.cubeSize -1)) &&
+                        ((props.x >= 0) && (props.x <= props.props.cubeSize -1)) &&
+                        ((props.y >= 0) && (props.y <= props.props.cubeSize -1)) &&
+                        ((props.z === 0)) &&
                         side === "back") {
                         showSideLet = true
                     }
                     // górna ścianka
                     if (
-                        ((props.x > 0) && (props.x < props.props.cubeSize -1)) &&
-                        ((props.z > 0) && (props.z < props.props.cubeSize -1)) &&
+                        ((props.x >= 0) && (props.x <= props.props.cubeSize -1)) &&
+                        ((props.z >= 0) && (props.z <= props.props.cubeSize -1)) &&
+                        (props.y === 0) &&
                         side === "top") {
                         showSideLet = true
                     }
                     // lewa ścianka
                     if (
-                        ((props.y > 0) && (props.y < props.props.cubeSize -1)) &&
-                        ((props.z > 0) && (props.z < props.props.cubeSize -1)) &&
+                        ((props.y >= 0) && (props.y <= props.props.cubeSize -1)) &&
+                        ((props.z >= 0) && (props.z <= props.props.cubeSize -1)) &&
+                        (props.x === 0) &&
                         side === "left") {
                         showSideLet = true
                     }
                     // prawa ścianka
                     if (
-                        ((props.y > 0) && (props.y < props.props.cubeSize - 1)) &&
-                        (props.y === 0) &&
-                        (props.x === 0) &&
+                        ((props.y >= 0) && (props.y <= props.props.cubeSize -1)) &&
+                        ((props.z >= 0) && (props.z <= props.props.cubeSize -1)) &&
+                        (props.x === props.props.cubeSize -1) &&
                         side === "right"
                     ) {
                         showSideLet = true;
+                    }
+                    // dolna ścianka
+                    if (
+                        ((props.x >= 0) && (props.x <= props.props.cubeSize -1)) &&
+                        ((props.z >= 0) && (props.z <= props.props.cubeSize -1)) &&
+                        (props.y === props.props.cubeSize -1) &&
+                        side === "bottom"
+                    ) {
+                        showSideLet = true;
+                    }
+                    // tylna ścianka
+                    if (
+                        ((props.x >= 0) && (props.x <= props.props.cubeSize -1)) &&
+                        ((props.y >= 0) && (props.y <= props.props.cubeSize -1)) &&
+                        ((props.z === props.props.cubeSize -1)) &&
+                        side === "front") {
+                        showSideLet = true
                     }
                 }
                 if (showSideLet) {
