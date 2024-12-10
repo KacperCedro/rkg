@@ -9,11 +9,11 @@ export const Cube = (props) => {
     const [lastPosition, setLastPosition] = useState({ x: 0, y: 0 });
 
     useEffect(() => {
-        console.log("enableInsideCubes changed:", props.enableInsideCubes);
+        //console.log("enableInsideCubes changed:", props.enableInsideCubes);
         const table = loadSubCubaTable(props);
 
         if (!props.enableInsideCubes) {
-            console.log("Loaded without inside cubes");
+            //console.log("Loaded without inside cubes");
             setSubCubeTable(
                 table.filter((element) => 
                     (element.y === 0 || element.y === props.cubeSize - 1) ||
@@ -115,7 +115,10 @@ export const Cube = (props) => {
         };
     }, [isInteracting]);
 
-    const subCubeElements = subCubeTable?.map((element) => element.component);
+    const subCubeElements = subCubeTable?.map((element) => { 
+        //console.log("sub cube")
+        return element.component
+    });
 
     return (
         <>

@@ -24,12 +24,6 @@ export const SubCube = (props) => {
                     left: `rotateY(-90deg) translateZ(${props.props.sideSize / 2}px)`,
                     right: `rotateY(90deg) translateZ(${props.props.sideSize / 2}px)`,
                 };
-
-                if (
-                    (props.y === 0 || props.y === props.cubeSize - 1) ||
-                    (props.x === 0 || props.x === props.cubeSize - 1) ||
-                    (props.z === 0 || props.z === props.cubeSize - 1)
-                ) {
                     // tylna ścianka
                     if (
                         ((props.x >= 0) && (props.x <= props.props.cubeSize -1)) &&
@@ -80,8 +74,9 @@ export const SubCube = (props) => {
                         side === "front") {
                         showSideLet = true
                     }
-                }
                 if (showSideLet) {
+                    //console.log(props.x, props.y, props.z, side, "side");
+                    
                     return (
                         <SubCubeSide
                             key={index}
@@ -96,7 +91,7 @@ export const SubCube = (props) => {
                 }
                 else if (!showSideLet) {
                     return(
-                        <></>
+                        <> </>
                     )
                 }
             })}

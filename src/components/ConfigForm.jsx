@@ -18,7 +18,7 @@ export const ConfigForm = (formProps) => {
                 enableInsideCubes: tmpEnableInsideCubes,
                 subCubeColors: tmpSubCubeColors
             })
-            console.log(tmpSubCubeColors)
+            //console.log(tmpSubCubeColors)
         }} 
         >
             <h1>

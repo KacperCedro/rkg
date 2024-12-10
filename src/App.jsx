@@ -38,7 +38,8 @@ function App() {
     setSubCubeColors(data.subCubeColors)
     setCubeKey((prevKey) => prevKey++)
   }
-
+  //console.log("cube");
+  
   return (
     <>
       <button onClick={() => {
@@ -69,7 +70,6 @@ function App() {
         cubeOpacity={cubeOpacity}
         cubeSize={cubeSize}
         enableInsideCubes={enableInsideCubes}
-        tableOfSides={tableOfSides}
         subCubeColors={subCubeColors}
       />
     </>
